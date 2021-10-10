@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:http="http://www.mulesoft.org/schema/mule/http" xmlns="http://www.mulesoft.org/schema/mule/core"
+	xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd">
+	<flow name="rf-united-flightsFlow" doc:id="02c26ac4-6ee5-4e2e-99b9-a1965bced043" >
+		<logger level="INFO" doc:name="Logger: rf-entry logger" doc:id="137da673-1396-49a4-aa60-97ae28c4cc5f" message="*********** rf-entry logger**********"/>
+		<http:request method="GET" doc:name="United Flights REST API" doc:id="a2004c8a-0122-4d10-9a6a-6ac6dea0cfbe" config-ref="HTTP_Request_configuration" path="/${httpRequestor.path}/{destination}">
+			<http:uri-params ><![CDATA[#[output application/java
+---
+{
+	"destination" : attributes.uriParams.destination
+}]]]></http:uri-params>
+		</http:request>
+		<logger level="INFO" doc:name="Logger: rf-exit logger" doc:id="87a29d7e-e157-4311-9c5f-e14f92ab5386" message="*********** rf-exit logger**********"/>
+	</flow>
+</mule>

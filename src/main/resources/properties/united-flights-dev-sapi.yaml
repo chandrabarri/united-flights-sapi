@@ -1,0 +1,14 @@
+# Http listener path details
+http:
+  host: "0.0.0.0"
+  port: "8081"
+  path: "/api/*"
+  
+# Http Requestor path details
+httpRequestor:
+  host: "mu.mulesoft-training.com"
+  port: "80"
+  path: "/essentials/united/flights"
+  
+ 
+  
